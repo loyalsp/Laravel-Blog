@@ -7,12 +7,14 @@
  */
 
 namespace App\Http\Controllers;
+use App\Post;
 
 
 class AdminController extends Controller
 {
     public function getIndex()
     {
-        return view('admin.index');
+        $posts = Post::orderBy('created_at', 'decs')->take(3)->get();
+        return view('admin.index',['posts'=> $posts]);
     }
 }

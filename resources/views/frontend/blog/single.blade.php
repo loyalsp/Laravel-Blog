@@ -6,8 +6,8 @@
 
 @section('content')
     <article>
-        <h1>post title</h1>
-        <span>post author | date</span>
-        <p>Post content</p>
+        <h1>{{$post->title}}</h1>
+        <span>{{$post->author}} | {{$post->created_at}}</span>
+        <p>{{$post->body}}</p>
     </article>
 @endsection

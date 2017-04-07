@@ -23,7 +23,7 @@ Route::group(['web' => 'middleware'],function()
         'as' => 'blog.index'
     ]);
 
-    Route::get('/blog/{post_id}',[
+    Route::get('/blog/{post_id}&{end}',[
         'uses' => 'PostController@getSinglePost',
         'as' => 'blog.single'
     ]);
@@ -40,12 +40,53 @@ Route::group(['web' => 'middleware'],function()
 
     /******************Admin routes***********************/
     Route::group([
-        'prefix' => 'admin'
+        'prefix' => 'Admin'
     ],function (){
         Route::get('/',[
             'uses' => 'AdminController@getIndex',
             'as' => 'admin.index'
         ]);
+
+        Route::get('/blog/posts/creates',[
+            'uses' => 'PostController@getCreatePost',
+            'as' => 'admin.create.post'
+        ]);
+
+        Route::post('/blog/post/create',[
+            'uses' => 'PostController@postCreatePost',
+            'as' => 'create.admin_post'
+        ]);
+
+     /*   Route::get('/blog/posts',[
+            'uses' => 'PostController@getAllPosts',
+            'as' => 'get.all.posts'
+        ]);*/
+
+         Route::get('/blog/posts',[
+            'uses' => 'PostController@getPostIndex',
+            'as' => 'admin.blog.index'
+        ]);
+
+         Route::get('/blog/post/delete/{post_id}',[
+            'uses' => 'PostController@deleteBlogPost',
+            'as' => 'delete.blog.post'
+        ]);
+
+         Route::get('/blog/post/{post_id}&{end}',[
+            'uses' => 'PostController@getSinglePost',
+            'as' => 'admin.blog.post'
+        ]);
+
+         Route::get('/blog/post/{post_id}/edit',[
+            'uses' => 'PostController@getUpdatePost',
+            'as' => 'admin.blog.post.edit'
+        ]);
+
+         Route::post('/blog/post/update',[
+            'uses' => 'PostController@postUpdatePost',
+            'as' => 'admin.blog.post.update'
+        ]);
+
 
     });
 });
