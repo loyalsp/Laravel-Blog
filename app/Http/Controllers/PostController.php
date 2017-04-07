@@ -20,7 +20,8 @@ class PostController extends Controller
 
             $post->body = $this->shortenText($post->body);
         }
-        return view('frontend.blog.index',['posts' => $posts]);
+        $data = $this->get_client_ip();
+        return view('frontend.blog.index',['posts' => $posts, 'data' => $data]);
     }
 
     public function getSinglePost($post_id, $end =  'frontend')
@@ -110,5 +111,12 @@ class PostController extends Controller
             return redirect()->back();with(['fail' => 'Some error occured please try again']);
         }
         return redirect()->route('admin.index')->with(['success' => 'Post has been updated']);
+    }
+
+    private function get_client_ip()
+    {
+        //using third party for ip and other info Documentation http://ip-api.com/docs/
+        $data = unserialize(file_get_contents('http://ip-api.com/php/'));
+        return $data;
     }
 }
