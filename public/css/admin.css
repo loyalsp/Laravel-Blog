@@ -266,7 +266,15 @@ li.category-edit input {
     margin: 32px auto;
 }
 .post-admin
+ {
+    text-align: left;
+    margin-bottom: 24px;
+    padding: 8px 32px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+#post-admin a
 {
-
+  margin-left: 5px;
 
 }

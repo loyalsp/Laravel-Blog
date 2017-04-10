@@ -9,7 +9,7 @@
             <div class="input-group">
                 <label for="title">Title</label> {{--if the form is not validated this will get the old typed value "Request::old('title')"--}}
                 <input id="title" name="title" type="text"
-                       {{$errors->has('title') ? 'class=has-error' : ''}} value="{{Request::old('title') ? Request::old('title') : isset($post) ? $post->title : ''}}">
+                        value="{{Request::old('title') ? Request::old('title') : isset($post) ? $post->title : ''}}">
             </div>
 
             <div class="input-group">
