@@ -19,5 +19,18 @@ class CategoryController extends Controller
         return view ('admin.blog.categories',['categories' => $categories]);
     }
 
-
+    public function postCreateCategory(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required|unique:categories'
+        ]);
+        $category = new Category();
+        $category->name = $request['name'];
+        $saved =$category->save();
+        if($saved)
+        {
+            return Response::json(['message' => 'category saved'], 200);
+        }
+        return Response::json(['message' => 'category could not be saved'], 404);
+    }
 }

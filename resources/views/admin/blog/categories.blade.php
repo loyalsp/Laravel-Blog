@@ -12,7 +12,7 @@
               <label for="name"
 >Category name</label>
           <input name="name" id="name" type="text">
-              <button class="btn" type="submit">Create Category</button>
+              <button id="btn" type="submit">Create Category</button>
           </div>
         </form>
     </section>
@@ -51,6 +51,7 @@
 @section('scripts')
 <script type="text/javascript">
 var token = "{{Session::token()}}";
+var url = "{{route('admin.create.category')}}";
 </script>
     <script type="text/javascript" src="{{URL::to('js/categories.js')}}"></script>
     @endsection

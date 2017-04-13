@@ -87,9 +87,14 @@ Route::group(['web' => 'middleware'],function()
             'as' => 'admin.blog.post.update'
         ]);
 
-        Route::get('/blog/categories/',[
+        Route::get('/blog/categories',[
             'uses' => 'CategoryController@getCategoryIndex',
             'as' => 'admin.blog.categories'
+        ]);
+
+        Route::post('/create/new/category',[
+            'uses' => 'CategoryController@postCreateCategory',
+            'as' => 'admin.create.category'
         ]);
 
     });
