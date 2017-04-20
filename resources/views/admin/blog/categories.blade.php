@@ -19,7 +19,7 @@
     <section class="list">
 @foreach($categories as $category)
     <article>
-        <div class="category-info" data-id="{{$category->id}}">
+        <div class="category-info"  data-id="{{$category->id}}">
         <h3>{{$category->name}}</h3>
         </div>
 
@@ -52,6 +52,8 @@
 <script type="text/javascript">
 var token = "{{Session::token()}}";
 var url = "{{route('admin.create.category')}}";
+var catEditUrl = "{{route('admin.update.category')}}";
+var adminUrl = "{{route('admin.index')}}";
 </script>
     <script type="text/javascript" src="{{URL::to('js/categories.js')}}"></script>
     @endsection

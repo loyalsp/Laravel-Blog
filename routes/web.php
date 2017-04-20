@@ -97,6 +97,17 @@ Route::group(['web' => 'middleware'],function()
             'as' => 'admin.create.category'
         ]);
 
+        Route::post('/update/categories',[
+            'uses' => 'CategoryController@postUpdateCategory',
+            'as' => 'admin.update.category'
+        ]);
+
+        Route::get('/{cat_id}/delete',[
+            'uses' => 'CategoryController@deleteCategory',
+            'as' => 'admin.delete.category'
+        ]);
+
+
     });
 });
 
